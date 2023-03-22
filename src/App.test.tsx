@@ -5,10 +5,10 @@ import {App} from "./App";
 
 describe('App', function () {
     it('should display pass in number', function () {
-        let container = document.createElement('div');
+        const container = document.createElement('div');
         document.body.appendChild(container);
         act(() => {
-            ReactDOM.render(<App num={191}/>, container);
+            ReactDOM.render(<App />, container);
         })
         const header = container.querySelector('h1');
         expect(header.textContent).toBe("Hello world React! Num: 191")
