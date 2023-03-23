@@ -1,0 +1,63 @@
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial;
+  font-size: 12px;
+  background: lightskyblue;
+  text-align: center;
+}
+
+input, button {
+  padding: 10px;
+  margin: 16px;
+  border-radius: 5px;
+  border: 1px solid #444;
+}
+
+button {
+  width: 100px;
+  cursor: pointer;
+}
+
+#errorMessage {
+  color: red;
+  font-weight: bold;
+}
+
+#loading {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #00add8;
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+  
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+
+#results {
+  background: white;
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 2px 4px -1px #000;
+}
+
+.tile {
+  background: white;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 1px 2px 4px -1px #000;
+}

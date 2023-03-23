@@ -7,10 +7,13 @@ type TaxBracketTileProps = {
 };
 
 export const TaxBracketTile = ({ min, max, taxesPaid }: TaxBracketTileProps) => {
+  console.log('max', max)
   return (
-    <>
+    <div className="tile">
+      <div><b>Bracket</b></div>
       <div>{min} - {max}</div>
-      <div>Taxes paid: {taxesPaid}</div>
-    </>
+      <br/>
+      <div><b>Taxes paid:</b> {taxesPaid}</div>
+    </div>
   );
 }

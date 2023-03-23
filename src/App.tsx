@@ -3,6 +3,8 @@ import { useState } from "react";
 import { TaxBracket, TaxResponse } from "./types";
 import { BASE_URL } from "./constants";
 import { TaxBracketTile } from "./components/TaxBracketTile";
+import { ErrorAlert } from "./components/ErrorAlert";
+import './App.css';
 
 /**
  * Marginal Taxation Rate Calculator App
@@ -79,7 +81,7 @@ export const App = () => {
       return (
         <TaxBracketTile
           min={currencyFormatter.format(bracket.min)}
-          max={currencyFormatter.format(bracket.max)}
+          max={bracket.max && currencyFormatter.format(bracket.max)}
           taxesPaid={formattedTaxesPaid} key={bracket.min}
         />
       )
@@ -87,23 +89,32 @@ export const App = () => {
     return null;
   });
 
-  if (isLoading) return <>Loading...</>;
+  if (isLoading) return <div id="loading" />;
 
+  // Render - usually would localize strings for translation (if needed)
   return taxBrackets.length > 0 ? (
     <>
-      Your salary: ${salary} <br/>
-      {taxBracketsView}
-      Total taxes paid: ${totalTaxesPaid}
+      <h1>Results</h1>
+      <div id='results'>
+        <b>Your salary:</b> {currencyFormatter.format(parseInt(salary))}<br />
+        <b>Tax Year:</b> {taxYear}<br />
+        <b>Total taxes paid:</b> {currencyFormatter.format(totalTaxesPaid)}
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        {taxBracketsView}
+      </div>
       <button onClick={resetInput}>Reset</button>
     </>
   ) : (
     <>
       <h1>Marginal Tax Bracket Calculator</h1>
-      {hasErrors && <div>{hasErrors}</div>}
+      {hasErrors && <ErrorAlert errorMessage={hasErrors} />}
       <form>
-        <input autoFocus type="text" onChange={e => setTaxYear(e.target.value)} placeholder="Please enter a tax year" />
-        <input type="text" onChange={e => setSalary(e.target.value)} placeholder="Please enter your annual salary" />
-        <button type="submit" onClick={handleSubmit}>Submit</button>
+        <input autoFocus type="text" onChange={e => setTaxYear(e.target.value)} placeholder="Enter a tax year" />
+        <input type="text" onChange={e => setSalary(e.target.value)} placeholder="Enter your annual salary" />
+        <div>
+          <button type="submit" onClick={handleSubmit}>Submit</button>
+        </div>
       </form>
     </>
   );
