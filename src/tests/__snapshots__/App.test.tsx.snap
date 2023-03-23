@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should display pass in number 1`] = `
+<div>
+  <h1>
+    Marginal Tax Bracket Calculator
+  </h1>
+  
+  <form>
+    <input
+      placeholder="Enter a tax year"
+      type="text"
+    />
+    <input
+      placeholder="Enter your annual salary"
+      type="text"
+    />
+    <div>
+      <button
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+`;

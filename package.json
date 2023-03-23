@@ -20,6 +20,9 @@
     "test": "jest",
     "lint": "eslint ."
   },
+  "jest": {
+    "moduleNameMapper": { "\\.(css|less)$": "<rootDir>/styleMock.tsx" }
+  },
   "bugs": {
     "url": "https://github.com/rajjeet/react-playbook/issues"
   },
